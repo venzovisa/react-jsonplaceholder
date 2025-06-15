@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router";
 import Home from "../components/home/Home";
 import userEvent from "@testing-library/user-event";
 
-describe.skip("Users", () => {
+describe("Users", () => {
   const mockUser = {
     id: 1,
     name: "Leanne Graham",

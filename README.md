@@ -1,54 +1,92 @@
-# React + TypeScript + Vite
+# React JSONPlaceholder App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern full-stack web application built with **React**, **Redux Toolkit**, **RTK Query**, **Vite**, and **Ant Design** on the frontend, and an **Express.js** server on the backend. It demonstrates fetching, displaying, and manipulating data from a mock REST API (JSONPlaceholder), with state persisted locally.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔁 **Redux Toolkit** for state management
+- 🔥 **RTK Query** for efficient data fetching and caching
+- 🧪 **React Testing Library** and **Vitest** for unit and integration testing
+- 📦 **MSW (Mock Service Worker)** for API mocking during tests
+- 🎨 **Ant Design** for a polished UI/UX
+- ⚡ **Vite** as the build tool for fast development
+- 🚀 **Express.js** API boilerplate ready to replace external API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tech Stack
+
+**Frontend**
+- React 18
+- Redux Toolkit + RTK Query
+- Vite
+- Ant Design
+- React Router
+- TypeScript
+
+**Testing**
+- React Testing Library
+- Vitest
+- MSW
+- ExpressJS
+
+**Backend**
+- Node.js with Express.js (boilerplate, replace JSONPlaceholder). A repo for testing the App could be found [here](https://github.com/venzovisa/jsonplaceholder) that could provide a way to perform a CRUD operations.
+
+---
+
+## 📁 Project Structure
+```bs
+├── src/
+│ ├── __tests__/ # Unit tests
+│ ├── api/ # RTK Query slice and endpoints
+│ ├── components/ # Reusable UI components
+│ ├── store/ # Redux slices, setup, persist
+│ ├── App.tsx # App component wrapper
+│ ├── MainContent.tsx # Routes component wrapper
+│ ├── hooks/ # Custom hooks
+│ ├── models.ts # Global types
+│ ├── index.css # Global styles
+| ├── mocks/ # MSW for mocking API
+| ├── setupTest.ts # Store setup for testing
+| ├── mocks/ # MSW for mocking API
+│ └── main.tsx # Root component with providers
+├── vite.config.ts # Vite configuration
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- pnpm / npm / yarn
+
+### Installation
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+git clone https://github.com/venzovisa/react-jsonplaceholder
+cd react-jsonplaceholder
+npm install
+npm run dev
 ```
+
+### Run Express Backend (Optional)
+```js
+git clone https://github.com/venzovisa/jsonplaceholder
+cd jsonplaceholder
+npm install
+npm start
+```
+* Note: You should update .env file with URl of the server. Default is http://localhost:5000. Otherwise the client will use [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) as domain.
+
+### Testing
+
+```js
+npm run test
+```
+
