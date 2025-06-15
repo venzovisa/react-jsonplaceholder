@@ -84,7 +84,7 @@ describe("Users", () => {
     expect(screen.getByDisplayValue(mockUser.company.catchPhrase)).toBeInTheDocument();
     expect(screen.getByDisplayValue(mockUser.company.bs)).toBeInTheDocument();
     expect(await screen.findByTestId("save-button")).toBeInTheDocument();
-  })
+  });
 
   test('should revert any changes made to the fields', async () => {
     // Arrange
@@ -129,7 +129,7 @@ describe("Users", () => {
     expect(screen.getByDisplayValue(mockUser.company.name));
     expect(screen.getByDisplayValue(mockUser.company.catchPhrase));
     expect(screen.getByDisplayValue(mockUser.company.bs));
-  })
+  });
 
   test('should not save an empty form', async () => {
     // Arrange
@@ -161,7 +161,7 @@ describe("Users", () => {
     // Assert
     expect(await screen.findByTestId("revert-button")).toBeInTheDocument();
     expect(await screen.findByTestId("cancel-button")).toBeInTheDocument();
-  })
+  });
 
   test('should save filled form', async () => {
     // Arrange
@@ -180,5 +180,5 @@ describe("Users", () => {
     // Assert
     expect(await screen.findByTestId("edit-profile-button")).toBeInTheDocument();
     expect(await screen.findByTestId("posts-button")).toBeInTheDocument();
-  })
+  });
 });

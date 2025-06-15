@@ -94,20 +94,16 @@ const UserProfile = ({ user, children }: PropsWithChildren<{ user: User }>) => {
                             </article>)}
 
                             <div className={styles.actions}>
-                                <button type="submit" name='submit' className={styles.button} data-testid='save-button'>Save</button>
-                                <button
-                                    type="button"
+                                <Button htmlType="submit" name='submit' data-testid='save-button'>Save</Button>
+                                <Button
                                     onClick={() => resetForm({ values: userDataSnapshot })}
-                                    className={styles.button}
-                                    data-testid='revert-button'>Revert</button>
-                                <button
-                                    type="button"
+                                    data-testid='revert-button'>Revert</Button>
+                                <Button
                                     onClick={() => setIsEditing(false)}
-                                    className={styles.cancel}
                                     data-testid='cancel-button'
                                 >
                                     Cancel
-                                </button>
+                                </Button>
                             </div>
                         </Form>
                     )}

@@ -95,8 +95,7 @@
 }
 
 .buttonsGroup {
-  display: grid;
+  display: flex;
   gap: 1rem;
   justify-content: right;
-  grid-template-columns: 100px 100px;
 }

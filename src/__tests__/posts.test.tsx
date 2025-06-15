@@ -26,7 +26,7 @@ describe("Posts", () => {
         expect(postBody1).toBeInTheDocument();
         expect(postTitle2).toBeInTheDocument();
         expect(postBody2).toBeInTheDocument();
-    })
+    });
 
     test('should open post edit form', async () => {
         // Arrange
@@ -48,7 +48,7 @@ describe("Posts", () => {
         expect(await screen.findByTestId('post-save-button')).toBeInTheDocument();
         expect(await screen.findByTestId('post-revert-button')).toBeInTheDocument();
         expect(await screen.findByTestId('post-cancel-button')).toBeInTheDocument();
-    })
+    });
 
     test('should not save an empty edit form', async () => {
         // Arrange
@@ -68,7 +68,7 @@ describe("Posts", () => {
         // Assert
         expect(await screen.findByTestId('post-revert-button')).toBeInTheDocument();
         expect(await screen.findByTestId('post-cancel-button')).toBeInTheDocument();
-    })
+    });
 
     test('should revert empty form', async () => {
         // Arrange
@@ -89,7 +89,7 @@ describe("Posts", () => {
         // Assert
         expect(await screen.findByText(mockPosts[0].title)).toBeInTheDocument();
         expect(await screen.findByText(mockPosts[0].body)).toBeInTheDocument();
-    })
+    });
 
     test('should delete the first post', async () => {
         // Arrange
@@ -107,5 +107,5 @@ describe("Posts", () => {
         // Assert
         expect((await screen.findAllByText(mockPosts[1].title))[0]).toBeInTheDocument();
         expect((await screen.findAllByText(mockPosts[1].body))[0]).toBeInTheDocument();
-    })
+    });
 });

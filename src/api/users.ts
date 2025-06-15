@@ -5,7 +5,7 @@ import type {
   FetchBaseQueryError,
   FetchBaseQueryMeta,
 } from "@reduxjs/toolkit/query";
-import type { User } from "../models";
+import type { ID, User } from "../models";
 
 export const usersEndpoints = (
   builder: EndpointBuilder<
@@ -20,8 +20,8 @@ export const usersEndpoints = (
     "api"
   >
 ) => ({
-  getUserById: builder.query<User, number>({
-    query: (id: number) => `/users/${id}`,
+  getUserById: builder.query<User, ID>({
+    query: (id: ID) => `/users/${id}`,
     providesTags: [{ type: "Users", id: "UserId" }],
   }),
   getUsers: builder.query<User[], null>({

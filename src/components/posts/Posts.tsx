@@ -14,7 +14,7 @@ import { useDeletePostByIdMutation, useGetPostsByUserIdQuery, useGetUserByIdQuer
 
 const Posts = () => {
     const { userId } = useParams();
-    const { data: user } = useGetUserByIdQuery(userId);
+    const { data: user, isLoading: isUserLoading } = useGetUserByIdQuery(userId);
     const { data: posts, isLoading, isError, refetch } = useGetPostsByUserIdQuery(userId);
     const [deletePostById] = useDeletePostByIdMutation();
     const showLoader = useDelayedLoader(isLoading, 500);
@@ -39,7 +39,10 @@ const Posts = () => {
                 ]}
                 style={{ paddingInline: '24px' }}
             />
-            {user ? <UserProfile user={user} /> : <Empty />}
+
+            {isUserLoading ? <ListLoader customStyles={{ maxWidth: "600px" }} /> : null}
+
+            {user ? <UserProfile user={user} /> : !isUserLoading ? <Empty /> : null}
 
             <h2 className={styles.postTitle}>Posts</h2>
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { Col } from 'antd/es/grid';
 import Button from 'antd/es/button';
 import Collapse, { type CollapseProps } from 'antd/es/collapse/Collapse';
 import UserProfile from '../users/UserProfile';
@@ -57,4 +56,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;

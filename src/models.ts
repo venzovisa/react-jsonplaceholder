@@ -36,14 +36,4 @@ export type Todo = {
   completed: boolean;
 };
 
-type ErrorState<Payload> = {
-  data: Payload;
-  status: "loading" | "idle" | "succeeded" | "failed";
-  error: string | null;
-};
-
-export type PostsState = ErrorState<Post[]>;
-
-export type UsersState = ErrorState<User[]>;
-
-export type TodosState = ErrorState<Todo[]>;
+export type ID = number | string | undefined;

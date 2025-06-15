@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../test-utils";
 import { BrowserRouter } from "react-router";
 import Todos from "../components/todos/Todos";
@@ -32,7 +32,7 @@ describe("Todos", () => {
         // Assert
         expect(todoTitle1).toBeInTheDocument();
         expect(todoTitle2).toBeInTheDocument();
-    })
+    });
 
     test('should sort by title ascending on click', async () => {
         // Arrange
@@ -51,7 +51,7 @@ describe("Todos", () => {
         expect(todos[0].textContent === mockTodos[1].title).toEqual(true);
         expect(todos[1].textContent === mockTodos[2].title).toEqual(true);
         expect(todos[2].textContent === mockTodos[0].title).toEqual(true);
-    })
+    });
 
     test('should sort by user id descending on double click', async () => {
         // Arrange
@@ -70,9 +70,9 @@ describe("Todos", () => {
         expect(todos[0].textContent === mockTodos[2].title).toEqual(true);
         expect(todos[1].textContent === mockTodos[1].title).toEqual(true);
         expect(todos[2].textContent === mockTodos[0].title).toEqual(true);
-    })
+    });
 
-    test('should sort by user id descending on double click', async () => {
+    test('should sort by user id ascending on click', async () => {
         // Arrange
         renderWithProviders(
             <BrowserRouter>
@@ -90,7 +90,48 @@ describe("Todos", () => {
         expect(todos[0].textContent === mockTodos[0].title).toEqual(true);
         expect(todos[1].textContent === mockTodos[1].title).toEqual(true);
         expect(todos[2].textContent === mockTodos[2].title).toEqual(true);
-    })
+    });
+
+    test('should sort by completed status ascending on click', async () => {
+        // Arrange
+        renderWithProviders(
+            <BrowserRouter>
+                <Todos />
+            </BrowserRouter>
+        );
+
+        // Act
+        const checkboxes = await screen.findAllByRole('columnheader');
+        await userEvent.click((checkboxes[2]));
+
+        // Assert
+        const todos = await screen.findAllByText(/#mock-todos/i);
+        console.log(todos[0].textContent, todos[1].textContent, todos[2].textContent);
+        expect(todos[0].textContent === mockTodos[0].title).toEqual(true);
+        expect(todos[1].textContent === mockTodos[1].title).toEqual(true);
+        expect(todos[2].textContent === mockTodos[2].title).toEqual(true);
+    });
+
+    test('should sort by completed status descending on double click', async () => {
+        // Arrange
+        renderWithProviders(
+            <BrowserRouter>
+                <Todos />
+            </BrowserRouter>
+        );
+
+        // Act
+        const checkboxes = await screen.findAllByRole('columnheader');
+        await userEvent.click((checkboxes[2]));
+        await userEvent.click((checkboxes[2]));
+
+        // Assert
+        const todos = await screen.findAllByText(/#mock-todos/i);
+        console.log(todos[0].textContent, todos[1].textContent, todos[2].textContent);
+        expect(todos[0].textContent === mockTodos[1].title).toEqual(true);
+        expect(todos[1].textContent === mockTodos[2].title).toEqual(true);
+        expect(todos[2].textContent === mockTodos[0].title).toEqual(true);
+    });
 
     test('should search by user id on click button', async () => {
         // Arrange
@@ -108,7 +149,7 @@ describe("Todos", () => {
         // Assert
         const todos = await screen.findAllByText(/#mock-todos/i);
         expect(todos[0].textContent === mockTodos[1].title).toEqual(true);
-    })
+    });
 
     test('should reset search results on click button', async () => {
         // Arrange
@@ -128,5 +169,5 @@ describe("Todos", () => {
         // Assert
         const todosAfterReset = await screen.findAllByText(/#mock-todos/i);
         expect(todosAfterReset.length === mockTodos.length).toEqual(true);
-    })
+    });
 });

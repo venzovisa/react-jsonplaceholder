@@ -78,7 +78,7 @@ const PostsForm = ({ initialData, handleDelete }: { initialData: Post, handleDel
                             </div>
 
                             <div className={styles.fieldGroup}>
-                                <label htmlFor="name">Body:</label>
+                                <label htmlFor="body">Body:</label>
                                 <Field name="body" as="textarea" disabled={!editMode} rows={4} className={styles.formField} />
                                 <ErrorMessage name="body" component="div" className={styles.error} />
                             </div>
