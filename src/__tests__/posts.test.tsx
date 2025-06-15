@@ -4,24 +4,9 @@ import { renderWithProviders } from "../test-utils";
 import Posts from "../components/posts/Posts";
 import { MemoryRouter } from "react-router";
 import userEvent from "@testing-library/user-event";
+import { mockPosts } from "../mocks/mocks";
 
 describe("Posts", () => {
-    const mockPosts = [
-        {
-            userId: 1,
-            id: 1,
-            title:
-                "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-            body: "quia et suscipit suscipit recusandae",
-        },
-        {
-            userId: 1,
-            id: 2,
-            title: "qui est esse",
-            body: "est rerum tempore vitae sequi sint",
-        },
-    ]
-
     test('should render user posts', async () => {
         // Arrange
         renderWithProviders(

@@ -162,8 +162,8 @@ const Todos = () => {
                     { value: 2, label: 'title' },
                 ]}
             />
-            <Button onClick={handleSearch}>Search</Button>
-            <Button onClick={handleReset}>Reset</Button>
+            <Button onClick={handleSearch} data-testid="todos-search-button">Search</Button>
+            <Button onClick={handleReset} data-testid="todos-reset-button">Reset</Button>
         </Space>
         <Table columns={columns} dataSource={dataSource} />
     </>)

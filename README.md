@@ -82,7 +82,10 @@ cd jsonplaceholder
 npm install
 npm start
 ```
-* Note: You should update .env file with URl of the server. Default is http://localhost:5000. Otherwise the client will use [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) as domain.
+* Note: You should update ```.env``` file with your server URL. Default is http://localhost:5000. Otherwise the client will use [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) as domain.
+```js
+VITE_API = http://localhost:5000
+```
 
 ### Testing
 

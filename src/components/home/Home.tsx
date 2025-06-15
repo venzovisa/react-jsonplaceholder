@@ -23,11 +23,9 @@ function Home() {
       label: u.name,
       children: <>
         <UserProfile user={u} >
-          <Col span={5} >
-            <Link to={`/posts/${u.id}`} >
-              <Button type='primary' data-testid="posts-button">See posts</Button>
-            </Link>
-          </Col>
+          <Link to={`/posts/${u.id}`} >
+            <Button type='primary' data-testid="posts-button">See posts</Button>
+          </Link>
         </UserProfile>
       </>
     }))
