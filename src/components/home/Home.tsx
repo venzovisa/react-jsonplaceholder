@@ -15,7 +15,6 @@ function Home() {
   const { data, isLoading, isError, refetch } = useGetUsersQuery(null);
   const showLoader = useDelayedLoader(isLoading);
 
-
   useEffect(() => {
     const mapped = data?.map((u: User) => ({
       key: u.id,

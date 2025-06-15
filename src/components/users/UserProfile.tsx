@@ -52,6 +52,7 @@ const UserProfile = ({ user, children }: PropsWithChildren<{ user: User }>) => {
     const [isEditing, setIsEditing] = useState(false);
     const [userDataSnapshot, setUserDataSnapshot] = useState(user);
     const [updateUserById] = useUpdateUserByIdMutation();
+    const [disabledButtons, setDisabledButtons] = useState(true);
 
     const handleSubmit = (values: User) => {
         updateUserById({ id: values.id, user: values });
@@ -84,26 +85,38 @@ const UserProfile = ({ user, children }: PropsWithChildren<{ user: User }>) => {
                     enableReinitialize
                 >
                     {({ resetForm }) => (
-                        <Form className={styles.form}>
+                        <Form className={styles.form} onChange={() => setDisabledButtons(false)}>
                             <h2 data-testid="edit-profile-title">Edit profile</h2>
 
-                            {inputFieldsList.map(field => <article key={field.name} className={styles.formField}>
-                                <label htmlFor={field.name}>{field.label}</label>
-                                <Field name={field.name} />
-                                <ErrorMessage name={field.name} component="div" className={styles.error} />
-                            </article>)}
+                            {inputFieldsList.map(field =>
+                                <article
+                                    key={field.name}
+                                    className={styles.formField}
+                                >
+                                    <label htmlFor={field.name}>{field.label}</label>
+                                    <Field name={field.name} />
+                                    <ErrorMessage name={field.name} component="div" className={styles.error}
+                                    />
+                                </article>)}
 
                             <div className={styles.actions}>
-                                <Button htmlType="submit" name='submit' data-testid='save-button'>Save</Button>
+                                <Button
+                                    htmlType="submit"
+                                    name='submit'
+                                    data-testid='save-button'
+                                    disabled={disabledButtons}
+                                >Save</Button>
                                 <Button
                                     onClick={() => resetForm({ values: userDataSnapshot })}
-                                    data-testid='revert-button'>Revert</Button>
+                                    data-testid='revert-button'
+                                    disabled={disabledButtons}
+                                >Revert</Button>
                                 <Button
-                                    onClick={() => setIsEditing(false)}
-                                    data-testid='cancel-button'
-                                >
-                                    Cancel
-                                </Button>
+                                    onClick={() => {
+                                        setDisabledButtons(true);
+                                        setIsEditing(false);
+                                    }}
+                                    data-testid='cancel-button'>Cancel</Button>
                             </div>
                         </Form>
                     )}

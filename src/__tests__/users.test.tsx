@@ -175,6 +175,7 @@ describe("Users", () => {
     // Act
     const editProfileButton = await screen.findAllByTestId('edit-profile-button');
     await user.click(editProfileButton[0]);
+    await user.type(screen.getByDisplayValue(mockUser.phone), '999');
     await user.click(await screen.findByTestId("save-button"));
 
     // Assert

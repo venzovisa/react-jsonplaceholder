@@ -18,6 +18,7 @@ const PostsForm = ({ initialData, handleDelete }: { initialData: Post, handleDel
     const [originalData, setOriginalData] = useState(initialData);
     const [editMode, setEditMode] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [disabledButtons, setDisabledButtons] = useState(true);
     const [updatePostById] = useUpdatePostByIdMutation();
 
     const handleEdit = () => {
@@ -70,7 +71,7 @@ const PostsForm = ({ initialData, handleDelete }: { initialData: Post, handleDel
                     enableReinitialize
                 >
                     {({ resetForm }) => (
-                        <Form className={styles.form}>
+                        <Form className={styles.form} onChange={() => setDisabledButtons(false)}>
                             <div className={styles.fieldGroup}>
                                 <label htmlFor='title'>Title:</label>
                                 <Field name="title" disabled={!editMode} />
@@ -86,9 +87,12 @@ const PostsForm = ({ initialData, handleDelete }: { initialData: Post, handleDel
                             <div className={styles.buttonRow}>
                                 {editMode ? (
                                     <>
-                                        <Button htmlType='submit' type='primary' data-testid="post-save-button">Save</Button>
-                                        <Button onClick={() => resetForm({ values: originalData })} data-testid="post-revert-button">Revert</Button>
-                                        <Button onClick={() => setEditMode(false)} data-testid="post-cancel-button">Cancel</Button>
+                                        <Button htmlType='submit' type='primary' data-testid="post-save-button" disabled={disabledButtons}>Save</Button>
+                                        <Button onClick={() => resetForm({ values: originalData })} data-testid="post-revert-button" disabled={disabledButtons}>Revert</Button>
+                                        <Button onClick={() => {
+                                            setDisabledButtons(true);
+                                            setEditMode(false)
+                                        }} data-testid="post-cancel-button">Cancel</Button>
                                     </>
                                 ) : null}
                             </div>
