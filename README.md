@@ -19,7 +19,7 @@ This project is a modern full-stack web application built with **React**, **Redu
 ## 🛠️ Tech Stack
 
 **Frontend**
-- React 18
+- React 19
 - Redux Toolkit + RTK Query
 - Vite
 - Ant Design
@@ -49,12 +49,14 @@ This project is a modern full-stack web application built with **React**, **Redu
 │ ├── hooks/ # Custom hooks
 │ ├── models.ts # Global types
 │ ├── index.css # Global styles
-| ├── mocks/ # MSW for mocking API
+│ ├── utils/ # Global utility functions and constants
 | ├── setupTest.ts # Store setup for testing
-| ├── mocks/ # MSW for mocking API
+| ├── test-utils.tsx # Exports renderWithProviders for use in tests
+| ├── mocks/ # MSW for mocking API and fake data
 │ └── main.tsx # Root component with providers
+├── .env # Environment variables such as API URL
 ├── vite.config.ts # Vite configuration
-└── README.md
+└── README.md # You are reading it now!
 ```
 
 ---
@@ -82,7 +84,7 @@ cd jsonplaceholder
 npm install
 npm start
 ```
-* Note: You should update ```.env``` file with your server URL. Default is http://localhost:5000. Otherwise the client will use [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) as domain.
+* Note: You should update ```.env``` file with your server URL. Default is http://localhost:5000. If not exists the client will use [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com) as domain.
 ```js
 VITE_API = http://localhost:5000
 ```
