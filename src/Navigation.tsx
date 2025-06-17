@@ -1,23 +1,8 @@
 import React, { useState } from 'react';
 import { MailOutlined, DashboardTwoTone } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Menu } from 'antd';
 import { Link } from 'react-router';
-
-type MenuItem = Required<MenuProps>['items'][number];
-
-const items: MenuItem[] = [
-    {
-        label: (<Link to="/">Home</Link>),
-        key: 'home',
-        icon: <MailOutlined />,
-    },
-    {
-        key: 'tasks',
-        label: (<Link to="/tasks">Tasks</Link>),
-        icon: <DashboardTwoTone />,
-    },
-];
+import type { MenuProps } from 'antd/es/menu';
+import Menu from 'antd/es/menu';
 
 const Navigation: React.FC = () => {
     const [current, setCurrent] = useState('home');
@@ -26,7 +11,14 @@ const Navigation: React.FC = () => {
         setCurrent(e.key);
     };
 
-    return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} style={{ marginBottom: '1rem' }} />;
+    return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" style={{ marginBottom: '1rem' }}>
+        <Menu.Item key="home" icon={<MailOutlined />}>
+            <Link to="/">Home</Link>
+        </Menu.Item>
+        <Menu.Item key="tasks" icon={<DashboardTwoTone />}>
+            <Link to="/tasks">Tasks</Link>
+        </Menu.Item>
+    </Menu>
 };
 
 export default Navigation;

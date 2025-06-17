@@ -50,7 +50,6 @@ const Todos = () => {
                 }
                 return 0;
             },
-            onFilter: (value: string, record: { title: string }) => record.title.startsWith(value as string),
             width: '60%',
         },
         {
@@ -78,7 +77,7 @@ const Todos = () => {
                     value: false,
                 },
             ],
-            onFilter: (value: boolean, record: DataType) => record.completed === value,
+            onFilter: (value: boolean | number | string, record: DataType) => record.completed === value,
             filterSearch: true,
             width: '20%',
             render: (value: boolean, record: DataType) =>
